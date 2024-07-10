@@ -1,21 +1,23 @@
 // const axios = require("axios");
+//ปณิตา ดอนเมือง 66610772
 import axios from "axios";
 
 /* assign interface/type to the function definition properly */
 const getTodo = async (todoId: number) => {
-  try{
-  const TodoRes = await axios.get('https://jsonplaceholder.typicode.com/todos/'+todoId)
-  const OwnerRes = await axios.get('https://jsonplaceholder.typicode.com/users/'+TodoRes.data.userId)
-  const tasks = {
-      owner : OwnerRes.data.name,
-      title : TodoRes.data.title,
-      completed : TodoRes.data.completed,
-}
-  return tasks;
-}
-  catch(err){
-    console.log('INVALID TODO ID');
-  }};
+  try {
+    const TodoRes = await axios.get('https://jsonplaceholder.typicode.com/todos/' + todoId)
+    const OwnerRes = await axios.get('https://jsonplaceholder.typicode.com/users/' + TodoRes.data.userId)
+    const tasks = {
+      owner: OwnerRes.data.name,
+      title: TodoRes.data.title,
+      completed: TodoRes.data.completed,
+    }
+    return tasks;
+  }
+  catch (err) {
+    return "INVALID TODO ID";
+  }
+};
 
 
 //test case
